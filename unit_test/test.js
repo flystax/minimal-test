@@ -5,7 +5,7 @@ scenario("Testing simple asserts")
   ("Lets test that things are true", function(t){
     t(true);
   })
-  ("lets test a fasle", function(t){
+  ("lets test a false", function(t){
     t(false);
   })
 
@@ -55,4 +55,18 @@ scenario("Testing the rest")
   })
   ("Test that assert message gets shown", function(t){
     t(false, "This has to be shown");
+  })
+
+var options = {
+  host:'localhost',
+  port: 3000,
+  path: '',
+  method: 'GET'
+};
+scenario("Testing page and content")
+  .page("lets test if this page is accessible and is correct", options, function(test){
+    //test.has('#abc');
+    test.content.is('h1', 'Express');
+    test.content.is('p', 'Welcome to Express');
+    test.done();
   })
